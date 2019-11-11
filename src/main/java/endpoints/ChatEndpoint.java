@@ -24,16 +24,18 @@ public class ChatEndpoint {
     public void OnClose (Session session)  {
        sessionList.remove(session);
            }
+
      @OnError
     public void OnError (Session session, Throwable throwable)  {
         throwable.printStackTrace();
     }
+
      @OnMessage
     public void OnMessage  (Session session, Message msg)  {
-        sessionList.forEach(s -> {
-            if (s==this.session) return;
+        sessionList.forEach(s->{
+            if (s ==this.session) return;
             try {
-                s.getBasicRemote().sendObject(msg);
+                s.getBasicRemote() .sendObject(msg);
             } catch (IOException | EncodeException e) {
                 e.printStackTrace();
             }

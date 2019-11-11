@@ -50,12 +50,11 @@
          <button id="start">start</button>
  </div>
  <div class="chatbox" >
-      <div class="messages"></div>
- <div>
-      <textarea class="msg"></textarea>
+     <textarea class="msg"></textarea>
+     <div class="messages"></div>
+
      </div>
-</div>
-</body> <script>
+</body> <script language="javascript" defer>
      let chatUnit = {
          init() {
              this.startbox = document.querySelector(".start");
@@ -97,14 +96,14 @@
 
              msgBlock.appendChild(fromBlock);
              msgBlock.appendChild(textBlock);
-
+             this.chatMessageContainer.prepend(msgBlock);
          },
          onClose() {
          },
 
          sendMessage(msg) {
-             this.onMessage({name: "i am", text: msg.text});
-             this.msgTextArea.value = "";
+             this.onMessage({name: "i'am", text:msg.text});
+             this.msgTextArea.value="";
              this.ws.send(JSON.stringify(msg));
          },
 
